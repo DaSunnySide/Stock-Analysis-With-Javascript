@@ -1,23 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import InputBox from './components/InputBox.js';
+import GraphBox from './components/GraphBox.js';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <InputBox />
+      <GraphBox />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          To be filled with components for displaying and analyzing stock data...
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
       </header>
     </div>
   );
