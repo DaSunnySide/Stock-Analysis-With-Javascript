@@ -1,14 +1,12 @@
-import React from 'react';
-import PerformAPIQuery from './InputBox.js';
-import * as d3 from 'd3';
+import React from "react";
+//import PerformAPIQuery from './InputBox.js'; Commented it out as its not being used at the momment
+//import * as d3 from 'd3';
 
 function Graph() {
-  return(
-    <div id="Graph" onLoad="loadData()">
-    </div>
-  )
+  return <div id="Graph" onLoad="loadData()"></div>;
 }
 
+/* Commenting this out as we do not use them at the momemnt
   function loadData() {
     d3.text('../testStockData.csv', function(data) {
     var parsedCSV = d3.csv.parseRows(data);
@@ -25,6 +23,6 @@ function Graph() {
         .append("td")
         .text(function(d) { return d; });
 })
-}
+}*/
 
 export default Graph;
