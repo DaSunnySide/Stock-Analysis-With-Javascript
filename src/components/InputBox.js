@@ -22,9 +22,11 @@ function PerformAPIQuery() {
   var datatype = 'csv';
   var API_KEY = 'VW506K51LFXGUT1C';
   var API_QUERY = 'https://www.alphavantage.co/query?function=' + graphType + '&symbol=' + stockSymbol + '&' + 'apikey=' + API_KEY+'&' +datatype;
+  var newData = {}
   var data = d3.json(API_QUERY).then(function(data) {
-    console.log(data.map);
+    
   })
+  console.log(newData);
 
 
 }
