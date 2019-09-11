@@ -26,7 +26,6 @@ function InputBox() {
 function PerformAPIQuery() {
   var graphType = GetRadioVal();
   var stockSymbol = StockSymbolValue();
-  var datatype = "csv";
   var API_KEY = "VW506K51LFXGUT1C";
   var API_QUERY =
     "https://www.alphavantage.co/query?function=" +
@@ -34,9 +33,9 @@ function PerformAPIQuery() {
     "&symbol=" +
     stockSymbol +
     "&apikey=" +
-    API_KEY +
-    "&" +
-    datatype; //Fixed string concatination issue
+    API_KEY; 
+  //Default datatype is jSON so removed the csv datatype declaration and the datatype parameter
+  //Fixed string concatination issue
   //console.log(typeof API_QUERY);
   //console.log(API_QUERY.length);
   fetch(API_QUERY)
