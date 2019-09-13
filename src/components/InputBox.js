@@ -6,6 +6,9 @@ import * as d3 from "d3";
 function InputBox() {
   return (
     <div>
+      <div id="jsonDisplay">
+
+      </div>
       <p>
         Input Box with Stock Symbol and Radio Buttons for function type. Submit
         button will add a new tab to graph that displays stock data with d3
@@ -26,18 +29,17 @@ function InputBox() {
 function PerformAPIQuery() {
   var graphType = GetRadioVal();
   var stockSymbol = StockSymbolValue();
-<<<<<<< HEAD
-  var datatype = 'csv';
+//<<<<<<< HEAD
   var API_KEY = 'VW506K51LFXGUT1C';
-  var API_QUERY = 'https://www.alphavantage.co/query?function=' + graphType + '&symbol=' + stockSymbol + '&' + 'apikey=' + API_KEY+'&' +datatype;
+  var API_QUERY = 'https://www.alphavantage.co/query?function=' + graphType + '&symbol=' + stockSymbol + '&' + 'apikey=' + API_KEY;
   var newData = {}
   var data = d3.json(API_QUERY).then(function(data) {
-    
+
   })
   console.log(newData);
 
 
-=======
+//=======
   var API_KEY = "VW506K51LFXGUT1C";
   var API_QUERY =
     "https://www.alphavantage.co/query?function=" +
@@ -45,7 +47,7 @@ function PerformAPIQuery() {
     "&symbol=" +
     stockSymbol +
     "&apikey=" +
-    API_KEY; 
+    API_KEY;
   //Default datatype is jSON so removed the csv datatype declaration and the datatype parameter
   //Fixed string concatination issue
   //console.log(typeof API_QUERY);
@@ -65,19 +67,21 @@ function PerformAPIQuery() {
      * then created in the DOM.
      */
   function displayResults(json) {
-    console.log(json);
+
+
+    document.getElementById("jsonDisplay").append(json["1. Information"]);
     for (var key in json) {
       if (json.hasOwnProperty(key)) {
-        var val = json[key];
-        console.log(val);
+        var val = json[key]
+        document.getElementById("body").append(Object.values(val));
       }
     }
   }
   //map.forEach((value, key))
-  /** 
+  /**
   var data = d3.json(API_QUERY).then(function(data) {
     console.log(data.map);
   });*/
->>>>>>> 18ecdc83f28c104635285fe9242e217a23080529
+//>>>>>>> 18ecdc83f28c104635285fe9242e217a23080529
 }
 export default InputBox;
