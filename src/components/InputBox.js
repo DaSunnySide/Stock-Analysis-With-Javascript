@@ -36,7 +36,6 @@ function PerformAPIQuery() {
   var data = d3.json(API_QUERY).then(function(data) {
 
   })
-  console.log(newData);
 
 
 //=======
@@ -61,19 +60,31 @@ function PerformAPIQuery() {
       displayResults(json);
     });
 
+    fetch(API_QUERY)
+      .then(response => response.json());
+    data = Object.assign(
+      Object.entries(query["Time Series Daily"].map(([date, o]) => ({
+        date: parseDate(date),
+        value: +o["4. close"]
+      })).reverse(),
+      {y: '$ ${symbol}'}
+)
+
+
     /**
      * Started working on running through the keys and
      * breaking them up. They need to be filtered and mapped
      * then created in the DOM.
      */
+
   function displayResults(json) {
 
-
-    document.getElementById("jsonDisplay").append(json["1. Information"]);
+    document.getElementById("jsonDisplay").append(json['Time Series (Daily)']);
     for (var key in json) {
       if (json.hasOwnProperty(key)) {
         var val = json[key]
-        document.getElementById("body").append(Object.values(val));
+        //document.getElementById("body").append(Object.values(val));
+        console.log(json[key]);
       }
     }
   }
