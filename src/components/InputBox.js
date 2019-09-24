@@ -38,12 +38,32 @@ function PerformAPIQuery() {
     API_KEY +
     "&" +
     datatype;
+  const promise = fetch(API_QUERY);
   console.log(API_QUERY);
-  Promise.then(function(response) {
-    const processPromise = response.json();
-    // console.log(processPromise);
-    return processPromise;
-  });
+  promise
+    .then(function(response) {
+      const processPromise = response.json();
+      // response.json().then(function(parsedJson) {
+      //   console.log("This is the parsed json", parsedJson[1]);
+      // });
+      // console.log(typeof processPromise);
+      return processPromise;
+    })
+    .then(function(processPromise) {
+      // var keyValue =
+      Object.keys(processPromise).forEach(function(key) {
+        console.log(key + ": " + processPromise[key]);
+        console.log("test");
+      });
+      // key.forEach(item => {
+      //   console.log(item);
+      // });
+      // console.log("This is the parsed json", keyValue);
+      console.log("This is the parsed json", processPromise);
+    });
+  // const processPromise = response.json();
+  // console.log(processPromise);
+  // return processPromise;
   // var data = d3.json(API_QUERY).then(function(data) {
   //   console.log(data.map);
   // });
