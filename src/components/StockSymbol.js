@@ -6,7 +6,8 @@ function StockSymbol() {
 
   return (
     <div>
-      <input type="text" id="stockSymbol" onkeyup="myFunction()" placeholder="Please input a stock symbol. . ." />
+      {/* Added a placeholder value for input to make debugging easy*/}
+      <input type="text" id="stockSymbol" value="MSFT" onkeyup="myFunction()" placeholder="Please input a stock symbol. . ." /> 
       <ul></ul>
     </div>
   )
