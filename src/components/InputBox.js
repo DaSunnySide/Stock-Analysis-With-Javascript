@@ -40,29 +40,52 @@ function PerformAPIQuery() {
     datatype;
   const promise = fetch(API_QUERY);
   console.log(API_QUERY);
-  promise
-    .then(function(response) {
-      const processPromise = response.json();
-      // response.json().then(function(parsedJson) {
-      //   console.log("This is the parsed json", parsedJson[1]);
-      // });
-      // console.log(typeof processPromise);
-      return processPromise;
-    })
-    .then(function(processPromise) {
-      // var keyValue =
-      Object.keys(processPromise).forEach(function(key) {
-        console.log(key + ": " + processPromise[key]);
-        console.log("test");
+  try {
+    promise
+      .then(function(response) {
+        const processPromise = response.json();
+        return processPromise;
+      })
+      .then(function(processPromise) {
+        Object.keys(processPromise).forEach(function(key) {
+          var currentKey = processPromise[key];
+          typeof currentKey === "object"
+            ? getProperties(currentKey, key)
+            : console.log("false");
+          // console.log(key + ": " + processPromise[key]);
+          // console.log(typeof processPromise[key]);
+          // console.log(processPromise[key]);
+        });
       });
-      // key.forEach(item => {
-      //   console.log(item);
-      // });
-      // console.log("This is the parsed json", keyValue);
-      console.log("This is the parsed json", processPromise);
+  } catch (e) {
+    console.error(e);
+  }
+  /*
+   * Function runs if objects has properties and
+   * loops through them and console's each one out with
+   * its key value.
+   */
+  function getProperties(currentKey, upperKey) {
+    Object.keys(currentKey).forEach(function(key) {
+      if (currentKey.hasOwnProperty(key)) {
+        if (typeof key === "string") {
+          console.log(key, " : ", currentKey[key]); //currentKey is an
+        }
+
+        if (upperKey == "Time Series (Daily)") {
+          var secondLayer = currentKey[key];
+          if (Object.keys(secondLayer)) {
+            Object.keys(secondLayer).forEach(item => {
+              console.log(item, " : ", secondLayer[item]);
+            });
+          }
+        }
+      } else {
+        console.log(key, " : ", currentKey[key]);
+      }
     });
-  // const processPromise = response.json();
-  // console.log(processPromise);
+  }
+
   // return processPromise;
   // var data = d3.json(API_QUERY).then(function(data) {
   //   console.log(data.map);
