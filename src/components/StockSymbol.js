@@ -1,15 +1,18 @@
 import React from "react";
-//import * as d3 from 'd3'; Commented this out as it is not being used
-//fixed syntax error for line 9/10 as well
+
+//import * as d3 from 'd3'; Not being used atm
+
 function StockSymbol() {
   return (
     <div>
+      {/* Added a placeholder defualtValue for input to make debugging easy*/}
       <input
         type="text"
         id="stockSymbol"
+        defaultValue="MSFT"
         onKeyUp="myFunction()"
         placeholder="Please input a stock symbol. . ."
-        value="MSFT" //Put in a placeholder stock value
+
       />
       <ul></ul>
     </div>
