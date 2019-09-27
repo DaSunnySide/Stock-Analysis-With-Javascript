@@ -1,4 +1,5 @@
 import React from "react";
+
 //import * as d3 from 'd3'; Not being used atm
 
 function StockSymbol() {
@@ -11,6 +12,7 @@ function StockSymbol() {
         defaultValue="MSFT"
         onKeyUp="myFunction()"
         placeholder="Please input a stock symbol. . ."
+
       />
       <ul></ul>
     </div>
